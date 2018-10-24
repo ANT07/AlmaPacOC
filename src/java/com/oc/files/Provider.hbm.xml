@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-06-2018 11:35:51 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="BDSORDENESCOMPRA" name="com.oc.model.Provider" optimistic-lock="version" schema="dbo" table="PROVIDER">
+    <id name="providerid" type="int">
+      <column name="PROVIDERID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="providername" type="string">
+      <column length="200" name="PROVIDERNAME"/>
+    </property>
+    <property name="providerstate" type="int">
+      <column name="PROVIDERSTATE" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="contacts" table="CONTACT" cascade="save-update">
+      <key>
+        <column name="PROVIDERID" not-null="true"/>
+      </key>
+      <one-to-many class="com.oc.model.Contact"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-22-2018 03:02:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="BDSORDENESCOMPRA" name="com.oc.model.Usuario" optimistic-lock="version" schema="dbo" table="USUARIO1">
+    <id name="usuario" type="string">
+      <column length="100" name="USUARIO1"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.oc.model.Roll" fetch="join" name="roll">
+      <column name="ROLL_ID"/>
+    </many-to-one>
+    <property name="nombre" type="string">
+      <column length="250" name="NOMBRE"/>
+    </property>
+    <property name="contrasena" type="string">
+      <column length="250" name="CONTRASENA"/>
+    </property>
+  </class>
+</hibernate-mapping>

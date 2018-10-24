@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-06-2018 11:35:51 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="BDSORDENESCOMPRA" name="com.oc.model.OrderMaster" optimistic-lock="version" schema="dbo" table="ORDER_MASTER">
+    <id name="orderid" type="string">
+      <column length="50" name="ORDERID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.oc.model.Contact" fetch="join" name="contact">
+      <column name="CONTACTID"/>
+      <column name="PROVIDERID" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.oc.model.Department" fetch="join" name="department">
+      <column name="DEPARTMENTID" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.oc.model.OrderType" fetch="join" name="orderType">
+      <column name="TYPEID" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.oc.model.Seller" fetch="select" name="seller">
+      <column name="SELLERID" not-null="true"/>
+    </many-to-one>
+    <property name="orderdate" type="timestamp">
+      <column length="23" name="ORDERDATE"/>
+    </property>
+    <property name="ordercoment" type="string">
+      <column length="7000" name="ORDERCOMENT"/>
+    </property>
+    <property name="ordertotal" type="java.lang.Float">
+      <column name="ORDERTOTAL" precision="24" scale="0"/>
+    </property>
+    <set fetch="join" inverse="true"  name="orderDetails" table="ORDER_DETAIL" cascade="all" order-by="id.orderdetailid asc">
+      <key>
+        <column length="50" name="ORDERID" not-null="true"/>
+      </key>
+      <one-to-many class="com.oc.model.OrderDetail"/>
+    </set>
+  </class>
+</hibernate-mapping>

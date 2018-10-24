@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-06-2018 11:35:51 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="BDSORDENESCOMPRA" name="com.oc.model.Contact" optimistic-lock="version" schema="dbo" table="CONTACT">
+    <composite-id class="com.oc.model.ContactId" name="id">
+      <key-property name="contactid" type="int">
+        <column name="CONTACTID"/>
+      </key-property>
+      <key-property name="providerid" type="int">
+        <column name="PROVIDERID"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.oc.model.Provider" fetch="join" insert="false" name="provider" update="false">
+      <column name="PROVIDERID" not-null="true"/>
+    </many-to-one>
+    <property name="contactname" type="string">
+      <column length="250" name="CONTACTNAME"/>
+    </property>
+    <property name="contactstate" type="int">
+      <column name="CONTACTSTATE" not-null="true"/>
+    </property>
+    <property name="phone" type="string">
+      <column length="50" name="PHONE"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="orderMasters" table="ORDER_MASTER">
+      <key>
+        <column name="CONTACTID"/>
+        <column name="PROVIDERID" not-null="true"/>
+      </key>
+      <one-to-many class="com.oc.model.OrderMaster"/>
+    </set>
+  </class>
+</hibernate-mapping>

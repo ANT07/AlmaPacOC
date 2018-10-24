@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/AlmaPacOC">
+  <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" maxActive="2" maxIdle="3" maxWait="5000" name="jdbc/miDataSource" password="1234" type="javax.sql.DataSource" url="jdbc:sqlserver://PC-TRASLADOS\SQLEXPRESS:52918;databaseName=BDSORDENESCOMPRA" username="sa">
+    </Resource>
+</Context>

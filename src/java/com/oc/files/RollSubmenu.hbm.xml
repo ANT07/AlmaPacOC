@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-22-2018 03:02:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="BDSORDENESCOMPRA" name="com.oc.model.RollSubmenu" optimistic-lock="version" schema="dbo" table="ROLL_SUBMENU">
+    <id name="rollSubmenuId" type="int">
+      <column name="ROLL_SUBMENU_ID"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.oc.model.Roll" fetch="select" name="roll">
+      <column name="ROLL_ID"/>
+    </many-to-one>
+    <many-to-one class="com.oc.model.SubMenu" fetch="select" name="subMenu">
+      <column name="SUMMENU_ID"/>
+    </many-to-one>
+    <property name="estado" type="int">
+      <column name="ESTADO" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

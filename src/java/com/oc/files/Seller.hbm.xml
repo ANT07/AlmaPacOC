@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-06-2018 11:35:51 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="BDSORDENESCOMPRA" name="com.oc.model.Seller" optimistic-lock="version" schema="dbo" table="SELLER">
+    <id name="sellerid" type="int">
+      <column name="SELLERID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="sellername" type="string">
+      <column length="250" name="SELLERNAME"/>
+    </property>
+    <property name="sellerstate" type="int">
+      <column name="SELLERSTATE" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="orderMasters" table="ORDER_MASTER">
+      <key>
+        <column name="SELLERID" not-null="true"/>
+      </key>
+      <one-to-many class="com.oc.model.OrderMaster"/>
+    </set>
+  </class>
+</hibernate-mapping>
